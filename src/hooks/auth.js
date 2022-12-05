@@ -1,8 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "lib/firebase";
 import { useState } from "react";
-import { DASHBOARD } from "lib/routes"
+import { DASHBOARD, LOGIN } from "lib/routes"
 import { useToast } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom";
 
@@ -39,6 +39,7 @@ export function useLogin() {
                 position: "top",
                 duration: 5000,             
             });
+            setLoading(false);
             return false; //return false if login failed
         }
         setLoading(false);
@@ -46,4 +47,25 @@ export function useLogin() {
     }
 
     return {login, isLoading}
+}
+
+export function useLogout() {
+    const [signOut, isLoading, error] = useSignOut(auth)
+    const toast = useToast();
+    const navigate = useNavigate();
+
+    async function logout() {
+        if(await signOut()) {
+            toast({
+                title: "Successfully logged out",
+                status: "success",
+                isClosable: true,
+                position: "top",
+                duration: 5000,
+            })
+            navigate(LOGIN);
+        } // else: show error [signOut() returns false if failed]
+    } 
+
+return {logout, isLoading}
 }
