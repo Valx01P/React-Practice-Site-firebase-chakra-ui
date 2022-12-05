@@ -10,7 +10,7 @@ export default function Layout() {
   const {user, isLoading} = useAuth(); //Asynchrounous task will have a loading state
 
   useEffect(() => {
-    if (pathname.startsWith("/protected") && !user) {    //redirects users to login if not logged in
+    if (!isLoading && pathname.startsWith("/protected") && !user) {    //redirects users to login if not logged in
       navigate(LOGIN);
     }
   }, [pathname, user, isLoading]);
