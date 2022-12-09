@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+FYI- I did not make this site myself and do not take any credit for the amazing work of the programmer that did, that credit goes to RavenJS-https://www.youtube.com/watch?v=ELyjd5OXZKI&ab_channel=RavenJS , I simply followed along with his tutorial to get a better understanding of React as it is a new technology I am learning, please subscribe to him, his tutorial was very useful and I wouldn't have had this quality practice without him, thanks!!
+
+#Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
